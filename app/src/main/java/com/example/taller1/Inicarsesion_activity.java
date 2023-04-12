@@ -24,7 +24,7 @@ public class Inicarsesion_activity extends AppCompatActivity {
         misPreferencias = getSharedPreferences("tienda_app", MODE_PRIVATE);
 
         if (misPreferencias.getBoolean("logueado", false) == true){
-            Intent miIntent = new Intent(this, MainActivity);
+            Intent miIntent = new Intent(this, MainActivity.class);
             startActivity(miIntent);
             finish();
         }
@@ -47,7 +47,7 @@ public class Inicarsesion_activity extends AppCompatActivity {
             SharedPreferences.Editor mieditor = misPreferencias.edit();
             mieditor.putBoolean("loqued", true);
             mieditor.apply();
-            Intent miIntent = new Intent(this, MainActivity);
+            Intent miIntent = new Intent(this, MainActivity.class);
             startActivity(miIntent);
             finish();
         } else {
