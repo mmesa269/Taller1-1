@@ -23,7 +23,7 @@ public class formulario {
     private RecyclerView rv_listado_productos;
 
     protected void onCreate(Bundle savedInstanceState) {
-    crear_prod = findViewBy(R.id.crear_prod);
+    crear_prod = findViewById(R.id.crear_prod);
     crear_prod.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v){
