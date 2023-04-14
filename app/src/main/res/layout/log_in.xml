@@ -16,10 +16,11 @@
         app:layout_constraintVertical_bias="1.0">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/clickIniciarSesion"
             android:layout_width="310dp"
             android:layout_height="55dp"
-            android:text="Button"
+            android:onClick="clickIniciarSesion"
+            android:text="Iniciar sesion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -74,8 +75,12 @@
         android:id="@+id/imageView4"
         android:layout_width="412dp"
         android:layout_height="269dp"
-        app:srcCompat="@drawable/logo_u_vig__1_"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="-4dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/logo_u_vig__1_" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

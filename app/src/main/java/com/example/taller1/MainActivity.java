@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -60,5 +61,15 @@ public class MainActivity extends AppCompatActivity {
         Listaprincipalproducto.add(producto1);
         Listaprincipalproducto.add(producto2);
 
+    }
+    public void clickAtras (View view){
+        Intent miIntent2 = new Intent(this, Inicarsesion_activity.class);
+        startActivity(miIntent2);
+        finish();
+    }
+    public void clickAdd (View view){
+        Intent miIntent3 = new Intent(this, activity_formulario1.class);
+        startActivity(miIntent3);
+        finish();
     }
 }
