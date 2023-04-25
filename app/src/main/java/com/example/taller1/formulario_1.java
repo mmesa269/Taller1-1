@@ -27,13 +27,14 @@ public class formulario_1 extends AppCompatActivity {
         crear_prod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                producto producto1 = new producto();
-                producto1.setNombre(prod_nombre.getText().toString());
-                producto1.setPrecio(Double.parseDouble(prod_precio));
-                producto1.setUrlimagen(prod_imagen.getText().toString());
+                producto productonuevo = new producto();
+                productonuevo.setNombre(prod_nombre.getText().toString());
+                productonuevo.setPrecio(Double.parseDouble(prod_precio.getText().toString()));
+                productonuevo.setUrlimagen(prod_imagen.getText().toString());
 
                 Listaprincipalproducto = new ArrayList<>();
-                Listaprincipalproducto.add(producto1);
+                Listaprincipalproducto.add(productonuevo);
+
             }
         });
     }
