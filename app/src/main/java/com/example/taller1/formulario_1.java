@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -34,6 +38,12 @@ public class formulario_1 extends AppCompatActivity {
 
                 Listaprincipalproducto = new ArrayList<>();
                 Listaprincipalproducto.add(productonuevo);
+
+                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                firestore.collection("Porductos").add(productonuevo);
+
+                Toast.makeText(formulario_1.this, "Se creo el producto", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

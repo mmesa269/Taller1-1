@@ -1,5 +1,6 @@
 package com.example.taller1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,12 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<producto> Listaprincipalproducto;
     private RecyclerView rv_listado_productos;
+
+    private AdaptadorPersonalizado miAdaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         rv_listado_productos = findViewById(R.id.rv_listado_productos);
 
-        AdaptadorPersonalizado miAdaptador = new AdaptadorPersonalizado(Listaprincipalproducto);
+        miAdaptador = new AdaptadorPersonalizado(Listaprincipalproducto);
 
         miAdaptador.setOnItemClickListener(new AdaptadorPersonalizado.OnItemClickListener() {
             @Override
@@ -47,20 +56,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cargarDatos(){
-        producto producto1 = new producto();
-        producto1.setNombre("Computador HP");
-        producto1.setPrecio(1749000.00);
-        producto1.setUrlimagen("https://http2.mlstatic.com/D_NQ_NP_600265-MLA48808603714_012022-O.jpg");
 
-        producto producto2 = new producto();
-        producto2.setNombre("Apple iPhone 9");
-        producto2.setPrecio(4500000.00);
-        producto1.setUrlimagen("https://http2.mlstatic.com/D_NQ_NP_737941-MLA44156685708_112020-O.jpg");
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("Productos").get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot document : task.getResult()){
+                                producto productoAtrapado = document.toObject(producto.class);
+                                productoAtrapado.setId(document.getId());
+                                Listaprincipalproducto.add(productoAtrapado);
+                            }
 
-        Listaprincipalproducto = new ArrayList<>();
-        Listaprincipalproducto.add(producto1);
-        Listaprincipalproducto.add(producto2);
+                            miAdaptador.setListainfo(Listaprincipalproducto);
+                        }else{
+                            Toast.makeText(MainActivity.this, "No se pudo conectar al servidor", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
+                }
+        );
     }
     public void clickAtras (View view){
         Intent miIntent2 = new Intent(this, Inicarsesion_activity.class);
@@ -68,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     public void clickAdd (View view){
-        Intent miIntent3 = new Intent(this, activity_formulario1.class);
+        Intent miIntent3 = new Intent(this, formulario_1.class);
         startActivity(miIntent3);
         finish();
     }
