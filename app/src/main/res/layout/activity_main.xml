@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/atras"
-        android:layout_width="131dp"
-        android:layout_height="41dp"
+        android:layout_width="135dp"
+        android:layout_height="56dp"
         android:onClick="clickAtras"
         android:text="Atras"
         app:layout_constraintBottom_toTopOf="@+id/rv_listado_productos"
@@ -29,8 +29,8 @@
 
     <Button
         android:id="@+id/crear_btn"
-        android:layout_width="234dp"
-        android:layout_height="39dp"
+        android:layout_width="243dp"
+        android:layout_height="58dp"
         android:onClick="clickAdd"
         android:text="Crear producto"
         app:layout_constraintBottom_toTopOf="@+id/rv_listado_productos"

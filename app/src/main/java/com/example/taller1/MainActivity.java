@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<producto> Listaprincipalproducto;
+    private ArrayList<producto> Listaprincipalproducto = new ArrayList<>();
     private RecyclerView rv_listado_productos;
 
     private AdaptadorPersonalizado miAdaptador;

@@ -21,27 +21,29 @@
                 android:layout_height="208dp"
                 app:srcCompat="@drawable/ce5699233cbc0f142250b520d967dff7" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prod_nombre"
                 android:layout_width="match_parent"
-                android:layout_height="139dp"
+                android:layout_height="130dp"
+                android:ems="10"
                 android:hint="Introducir nombre de producto"
-                android:textSize="24sp" />
+                android:inputType="textPersonName" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prod_precio"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="160dp"
+                android:ems="10"
                 android:hint="Introducir precio de producto"
-                android:inputType="number|numberDecimal"
-                android:textSize="24sp" />
+                android:inputType="textPersonName" />
 
-            <TextView
+            <EditText
                 android:id="@+id/prod_imagen"
                 android:layout_width="match_parent"
                 android:layout_height="167dp"
+                android:ems="10"
                 android:hint="Introducir url de imagen"
-                android:textSize="24sp" />
+                android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/crear_prod"
